@@ -9,11 +9,16 @@ public class DependentAdd {
     int dependentProfileID;
     String dependentAdress;
     String relationship;
-
+    /**
+     * Public constructor for the class
+     */
     public DependentAdd(){
         
     }
-
+    /**
+     * Saves the application and sends it to dataEntry.
+     * @return is weather it was a success or not.
+     */
     public boolean save(){
         return false;
     }

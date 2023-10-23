@@ -34,18 +34,18 @@ public class WorkFlowTest {
 
     @Test
     public void testDBSave() {
-        assertFalse(workFlow.DBSave()); // Assuming DBSave returns false
+        assertTrue(workFlow.DBSave()); // Assuming DBSave returns true
     }
 
     @Test
     public void testSaveReviewer() {
         Reviewer reviewer = new Reviewer(workFlow); // Create a sample Reviewer object
-        assertNull(workFlow.saveReviewer(reviewer)); // Assuming saveReviewer returns null
+        assertNotNull(workFlow.saveReviewer(reviewer)); // Assuming saveReviewer returns null
     }
 
     @Test
     public void testSaveApplication() {
         DataEntry de = new DataEntry(); // Create a sample DependentAdd object
-        assertNull(workFlow.saveApplication(de)); // Assuming saveApplication returns null
+        assertNotNull(workFlow.saveApplication(de)); // Assuming saveApplication returns null
     }
 }

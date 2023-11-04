@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "UI",
+            "request": "launch",
+            "mainClass": "com.immigration.app.UI",
+            "projectName": "immigration"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

@@ -56,9 +56,10 @@ public class UI2 extends Application{
         String immigrantAddressSaved = immigrantaddyField.getText();
         int immigrantID = Integer.parseInt(immigrantIDField.getText());
         int dependentID = Integer.parseInt(dependentIDField.getText());
-        String relationship = relationshipField.getText;
+        String relationship = relationshipField.getText();
         
-        DependentAdd dependentAdd = new DependentAdd(dependentNameSaved, 0);
+        DependentAdd dependentAdd = dataEntry.createDependentAdd();
+        dependentAdd.setDependentName(dependentNameSaved);
         dependentAdd.setDependentAddress(dependentAddressSaved);
         dependentAdd.setImmigrantAddress(immigrantAddressSaved);
         dependentAdd.setImmigrantID(immigrantID);

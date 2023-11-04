@@ -2,27 +2,27 @@ package com.immigration.app;
 
 public class DataEntry {
     //handle everything user wants to do
-    DependentAdd Dependent;
-    String ImmigrantName;
+    DependentAdd dependentAddApplication;
+    String immigrantName;
     Boolean isReturn;
 
-    public void DisplayScreen(){
+    public void displayScreen(){
         //displays screen
     }
 
-    public DependentAdd CreateDependentAdd(){
+    public DependentAdd createDependentAdd(){
         //creates the DependentAdd object
         return null;
     }
 
-    public DependentAdd RetrieveApp(){
+    public DependentAdd retrieveApp(){
         /*retrieves the dependent application that has already
         *been made for the immigrant if they have an existing application
         */
         return null;
     }
 
-    public void SavetoWF(){
+    public void savetoWF(){
         //sends the applicaiton to the workflow
     }
 

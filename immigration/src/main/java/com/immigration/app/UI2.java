@@ -31,7 +31,7 @@ public class UI2 extends Application{
         
         HBox hbox = new HBox(l, startnewButton, retrieveButton);
         hbox.setAlignment(Pos.CENTER);
-        hbox.setSpacing(20);
+        hbox.setSpacing(10);
         Scene scene = new Scene(hbox, 400, 100);
 
         stage.setTitle("Data Entry Application");

@@ -12,9 +12,11 @@ import javafx.stage.Stage;
 public class UI2 extends Application{
     private TextField nameField;
     private TextField addressField;
+    private TextField dependentIDField;
+    private TextField immigrantNameField;
     private TextField immigrantaddyField;
     private TextField immigrantIDField;
-    private TextField dependentIDField;
+    
     private TextField relationshipField;
 
     @Override
@@ -27,6 +29,8 @@ public class UI2 extends Application{
         nameField = new TextField();
         Label addressLabel = new Label("Dependent Address: ");
         addressField = new TextField();
+        Label dependentIDLabel = new Label("Dependent ID: ");
+        dependentIDField = new TextField();
 
         Label relationshipLabel = new Label("Relationship to Dependent:");
         relationshipField = new TextField();
@@ -35,11 +39,15 @@ public class UI2 extends Application{
         immigrantaddyField = new TextField();
         Label immigrantIDLabel = new Label("Immigrant Profile ID: ");
         immigrantIDField = new TextField();
+        Label immigrantNameLabel = new Label("Immigrant Name: ");
+        immigrantNameField = new TextField();
 
         Button saveButton = new Button("Save");
         saveButton.setOnAction(e -> saveDependentInfo(dataEntry));
 
-        root.getChildren().addAll(nameLabel, nameField, addressLabel, addressField, immigrantaddyLabel, immigrantaddyField, immigrantIDLabel, immigrantIDField, relationshipLabel, relationshipField, saveButton);
+        root.getChildren().addAll(nameLabel, nameField, addressLabel, addressField, dependentIDLabel, dependentIDField,
+        immigrantNameLabel, immigrantNameField, immigrantaddyLabel, immigrantaddyField, immigrantIDLabel, immigrantIDField, 
+        relationshipLabel, relationshipField, saveButton);
         Scene scene = new Scene(new StackPane(root), 640, 480);
         stage.setTitle("Data Entry Application");
         stage.setScene(scene);
@@ -57,6 +65,7 @@ public class UI2 extends Application{
         int immigrantID = Integer.parseInt(immigrantIDField.getText());
         int dependentID = Integer.parseInt(dependentIDField.getText());
         String relationship = relationshipField.getText();
+        String immigrantName = immigrantNameField.getText();
         
         DependentAdd dependentAdd = dataEntry.createDependentAdd();
         dependentAdd.setDependentName(dependentNameSaved);
@@ -65,5 +74,6 @@ public class UI2 extends Application{
         dependentAdd.setImmigrantID(immigrantID);
         dependentAdd.setDependentID(dependentID);
         dependentAdd.setRelationship(relationship);
+        dependentAdd.setImmigrantName(immigrantName);
     }
 }

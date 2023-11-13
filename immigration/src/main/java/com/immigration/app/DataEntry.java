@@ -29,10 +29,4 @@ public class DataEntry {
         //sends the applicaiton to the workflow
     }
 
-    public static void main(String[] args){
-        DependentAdd dependentAddApplication = new DependentAdd("Kaylie",  123);
-        
-        //displayScreen();
-    }
-
 }

@@ -9,10 +9,10 @@ public class DataEntry {
     String immigrantName;
     Boolean isReturn;
 
-    public static void displayScreen(){
+    /*public static void displayScreen(){
         UI2 ui2 = new UI2();
         ui2.screen1((new Stage()));
-    }
+    }*/
 
     public DependentAdd createDependentAdd(){
         return null;
@@ -32,7 +32,7 @@ public class DataEntry {
     public static void main(String[] args){
         DependentAdd dependentAddApplication = new DependentAdd("Kaylie",  123);
         
-        displayScreen();
+        //displayScreen();
     }
 
 }

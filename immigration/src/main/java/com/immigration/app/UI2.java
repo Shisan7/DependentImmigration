@@ -110,6 +110,7 @@ public class UI2 extends Application{
 
     public static void main(String[] args){
         launch();
+        
     }
 
     private void saveDependentInfo(DataEntry dataEntry){

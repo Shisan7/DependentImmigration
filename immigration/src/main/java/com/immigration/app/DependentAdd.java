@@ -23,13 +23,6 @@ public class DependentAdd {
         this.dependentName = dependentName;
         this.dependentProfileID = dependentProfileID;
     }
-    /**
-     * Saves the application and sends it to dataEntry.
-     * @return is weather it was a success or not.
-     */
-    public boolean save(){
-        return false;
-    }
 
     /*
      * gets the immigrant's profile ID number
@@ -50,7 +43,7 @@ public class DependentAdd {
      * @return String immigrant name
      */
     public String getImmigrantName(){
-        return null;
+        return ImmigrantName;
     }
     /*
      * sets the immigrant name
@@ -66,6 +59,10 @@ public class DependentAdd {
     public void setImmigrantAddress(String address){
         ImmigrantAddress = address;
     }
+
+    public String getImmigrantAddress(){
+        return ImmigrantAddress;
+    }
     /*
      * sets the dependent name
      * @return void
@@ -78,7 +75,7 @@ public class DependentAdd {
      * @return String name of dependent
      */
     public String getDependentName(){
-        return null;
+        return dependentName;
     }
     /*
      * sets the dependent address
@@ -87,12 +84,19 @@ public class DependentAdd {
     public void setDependentAddress(String address){
         dependentAdress = address;
     }
+
+    public String getDependentAddress(){
+        return dependentAdress;
+    }
     /*
      * sets the dependent profile ID number
      * @return void
      */
-    public void setDependentID(int ID){
-        dependentProfileID = ID;
+    public void setDependentID(int id){
+        dependentProfileID = id;
+    }
+    public int getDependentID(){
+        return dependentProfileID;
     }
     /*
      * sets the relationship between immigrant and dependent
@@ -100,5 +104,16 @@ public class DependentAdd {
      */
     public void setRelationship(String rel){
         relationship = rel;
+    }
+    public String getRelationship(){
+        return relationship;
+    }
+
+    public void setANum(int aNum){
+        ANumber = aNum;
+    }
+
+    public int getAnum(){
+        return ANumber;
     }
 }

@@ -11,8 +11,8 @@ public class WorkFlow {
 
     public WorkFlow(){
         readyQueue = new LinkedList<>();
-        terminatedList = new LinkedList<>(terminatedList);
-        completedList = new LinkedList<>(completedList);
+        terminatedList = new LinkedList<>();
+        completedList = new LinkedList<>();
         inProgressUser = null;
         inProgressReviewer = null;
     }

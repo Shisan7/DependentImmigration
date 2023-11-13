@@ -103,10 +103,14 @@ public class UI extends Application{
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public void ReviewerLauch(){
+        launch();
+    }
+
+    /* public static void main(String[] args) {
         launch();
         WorkFlow wf = new WorkFlow();
         Reviewer rv = new Reviewer(wf);
-    }
+    }*/
 }
 

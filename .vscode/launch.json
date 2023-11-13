@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Reviewer",
+            "request": "launch",
+            "mainClass": "com.immigration.app.Reviewer",
+            "projectName": "immigration"
+        },
+        {
+            "type": "java",
             "name": "UI2",
             "request": "launch",
             "mainClass": "com.immigration.app.UI2",

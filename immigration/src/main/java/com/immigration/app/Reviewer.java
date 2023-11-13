@@ -37,7 +37,7 @@ public class Reviewer {
      * @return Is the first application on the queue.
      */
     public DependentAdd GetFirst(WorkFlow wf){
-        return wf.readyQueue.remove();
+        return wf.readyQueue.peek();
     }
     /**
      * Gets the profileID back from the USCIS system if valid after giving a profileID.
@@ -89,5 +89,12 @@ public class Reviewer {
         else{//If it saves successfully, returns 1.
             return 1;
         }
+    }
+
+    public static void main(String[] args) {
+        WorkFlow wf = new WorkFlow();
+        Reviewer rv = new Reviewer(wf);
+        UI u = new UI();
+        u.ReviewerLauch();
     }
 }

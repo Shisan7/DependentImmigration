@@ -1,4 +1,5 @@
 package com.immigration.app;
+
 /*
  * @author Shisan
  */
@@ -23,15 +24,20 @@ public class Reviewer {
      * Saves the reviewer's progress
      * @return is weather the save was a success or not
      */
-    public boolean save(){
-        return false;
+    public boolean save(WorkFlow wf, Reviewer rv){
+        if(wf.saveReviewer(rv)==null){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
     /**
      * Gets the first application from the readyQueue
      * @return Is the first application on the queue.
      */
-    public DependentAdd GetFirst(){
-        return null;
+    public DependentAdd GetFirst(WorkFlow wf){
+        return wf.readyQueue.remove();
     }
     /**
      * Gets the profileID back from the USCIS system if valid after giving a profileID.
@@ -39,7 +45,8 @@ public class Reviewer {
      * @return is the profileID
      */
     public int GetProfile(int dependentProfileID){
-        return 0;
+        DependentAdd de = new DependentAdd("null", 598);
+        return de.getImmigrantID();
     }
     /**
      * Calls the USCIS function to see if the dependent is already assigned to an immigrant or not.
@@ -54,20 +61,33 @@ public class Reviewer {
      * @return is weather the application is valid or not to send result.
      */
     public boolean validate(DependentAdd da){
-        return false;
+        unique = false;
+        return unique;
     }
     /**
      * Sends the application to either the completed or terminated list based on the eligibility of the application.
      * @return is weather or not it was a success.
      */
-    public boolean sendResult(){
-        return false;
+    public boolean sendResult(DependentAdd da, WorkFlow wf, boolean result){
+        if(result){
+            wf.completedList.add(da);
+            return true;
+        }
+        else{
+            wf.terminatedList.add(da);
+            return false;
+        }
     }
     /**
      * Closes everything, saves the current progress and exits with an exit code.
      * @return is an int that denotes how the function exited.
      */
-    public int exit(){
-        return 0;
+    public int exit(WorkFlow wf, Reviewer rv){
+        if(wf.saveReviewer(rv)==null){//If the save fails, returns 0.
+            return 0;
+        }
+        else{//If it saves successfully, returns 1.
+            return 1;
+        }
     }
 }

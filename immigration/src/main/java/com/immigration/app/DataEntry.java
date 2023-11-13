@@ -1,17 +1,20 @@
 package com.immigration.app;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 
 public class DataEntry {
     //handle everything user wants to do
-    DependentAdd dependentAddApplication;
+    //DependentAdd dependentAddApplication;
     String immigrantName;
     Boolean isReturn;
 
-    public void displayScreen(){
-        //displays screen
+    public static void displayScreen(){
+        UI2 ui2 = new UI2();
+        ui2.screen1((new Stage()));
     }
 
     public DependentAdd createDependentAdd(){
-        //creates the DependentAdd object
         return null;
     }
 
@@ -24,6 +27,12 @@ public class DataEntry {
 
     public void savetoWF(){
         //sends the applicaiton to the workflow
+    }
+
+    public static void main(String[] args){
+        DependentAdd dependentAddApplication = new DependentAdd("Kaylie",  123);
+        
+        displayScreen();
     }
 
 }

@@ -108,9 +108,9 @@ public class UI2 extends Application{
     }
 
 
-    public static void main(String[] args){
+    public void launchUI2(){
         launch();
-        
+
     }
 
     private void saveDependentInfo(DataEntry dataEntry){

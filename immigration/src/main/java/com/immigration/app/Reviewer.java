@@ -25,12 +25,7 @@ public class Reviewer {
      * @return is weather the save was a success or not
      */
     public boolean save(WorkFlow wf, Reviewer rv){
-        if(wf.saveReviewer(rv)==null){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return false;
     }
     /**
      * Gets the first application from the readyQueue
@@ -83,12 +78,7 @@ public class Reviewer {
      * @return is an int that denotes how the function exited.
      */
     public int exit(WorkFlow wf, Reviewer rv){
-        if(wf.saveReviewer(rv)==null){//If the save fails, returns 0.
-            return 0;
-        }
-        else{//If it saves successfully, returns 1.
-            return 1;
-        }
+        return 0;
     }
 
     public static void main(String[] args) {

@@ -7,17 +7,38 @@ public class WorkFlow {
     LinkedList<DependentAdd> terminatedList;
     LinkedList<DependentAdd> completedList;
     DependentAdd inProgressUser;
-    Reviewer inProgressReviewer;
+
+    /*
+     * Accesses the file for readyQueue and reads through it adding it to the queue.
+     */
+    public void loadReadyQueue(){
+
+    }
+
+    public void loadTerminatedList(){
+
+    }
+
+    public void loadCompletedList(){
+
+    }
+
+    public void loadInProgressUser(){
+
+    }
 
     public WorkFlow(){
         readyQueue = new LinkedList<>();
         terminatedList = new LinkedList<>();
         completedList = new LinkedList<>();
         inProgressUser = null;
-        inProgressReviewer = null;
     }
 
     public boolean DBSave(){//Saves to database.
+        saveReadyQueue(inProgressUser);
+        saveTerminatedApp(inProgressUser);
+        saveCompletedApp(inProgressUser);
+        saveApplication(inProgressUser);
         return false;
     }
     /**
@@ -25,7 +46,7 @@ public class WorkFlow {
      * @param da is the business object/application given.
      * @return is checking weather the addition was a success or not.
      */
-    public boolean addReadyApp(DependentAdd da){
+    public boolean saveReadyQueue(DependentAdd da){
         return false;
     }
     /**
@@ -33,7 +54,7 @@ public class WorkFlow {
      * @param da is the business object/application given.
      * @return is checking weather the addition was a success or not.
      */
-    public boolean addTerminatedApp(DependentAdd da){
+    public boolean saveTerminatedApp(DependentAdd da){
         return false;
     }
     /**
@@ -41,23 +62,16 @@ public class WorkFlow {
      * @param da is the business object/application given.
      * @return is checking weather the addition was a success or not.
      */
-    public boolean addCompletedApp(DependentAdd da){
+    public boolean saveCompletedApp(DependentAdd da){
         return false;
     }
-    /**
-     * Stores the given Reviewer object in the inProgressReviewer variable and calls DBSave function.
-     * @param review is the Reviewer object to store.
-     * @return is the saved Reviewer object.
-     */
-    public Reviewer saveReviewer(Reviewer review){
-        return null;
-    }
+    
     /**
      * Converts the given DataEntry object into DependentAdd and saves to inProgressUser and calls DBSave function.
      * @param de is the application to store.
      * @return is the saved DependentAdd object.
      */
-    public DependentAdd saveApplication(DataEntry de){
+    public DependentAdd saveApplication(DependentAdd de){
         return null;
     }
 }

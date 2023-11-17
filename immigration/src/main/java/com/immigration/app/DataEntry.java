@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class DataEntry {
     //handle everything user wants to do
-    ArrayList<DependentAdd> savedAppsArray;
+    ArrayList<DependentAdd> savedAppsArray = new ArrayList<>();
     String immigrantName;
     Boolean isReturn;
 
@@ -27,7 +27,7 @@ public class DataEntry {
         */
         DependentAdd returnApp = null;
         for (DependentAdd app : savedAppsArray) {
-            if(app==application){
+            if(app.equals(application)){
                 returnApp = app;
                 return returnApp;
             }
@@ -37,7 +37,6 @@ public class DataEntry {
     }
 
     public void buildRetrieveApp(){
-        savedAppsArray = new ArrayList<>();
         try{
             File file = new File("inProgressUser.txt");
             Scanner scanner = new Scanner(file);

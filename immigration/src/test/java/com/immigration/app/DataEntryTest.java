@@ -20,6 +20,6 @@ class DataEntryTest {
         application.setRelationship("sister");
         DataEntry dataEntry = new DataEntry();
         dataEntry.savedAppsArray.add(application);
-        assertEquals(application, dataEntry.retrieveApp(application));
+        assertEquals(application, dataEntry.retrieveApp(application), "Retrieve application does not match the expected application.\n");
     }
 }

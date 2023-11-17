@@ -7,16 +7,16 @@ package com.immigration.app;
  * includes information for immigrant and dependent
  */
 public class DependentAdd {
-    public int appNum;
-    public int ImmigrantProfileID;
-    public String ImmigrantName;
-    public String ImmigrantAddress;
-    public int ImmigrantANumber;
-    public String dependentName;
-    public int dependentProfileID;
-    public String dependentAdress;
-    public int dependentANumber;
-    public String relationship;
+    int appNum;
+    int immigrantProfileID;
+    String immigrantName;
+    String immigrantAddress;
+    int immigrantANumber;
+    String dependentName;
+    int dependentProfileID;
+    String dependentAdress;
+    int dependentANumber;
+    String relationship;
 
     /**
      * Public constructor for the class
@@ -71,29 +71,29 @@ public class DependentAdd {
      * sets the immigrant profile ID number
      * @return void
      */
-    public void setImmigrantID(int ID){
-        ImmigrantProfileID = ID;
+    public void setImmigrantID(int id){
+        immigrantProfileID = id;
     }
     /*
      * gets the immigrant name
      * @return String immigrant name
      */
     public String getImmigrantName(){
-        return ImmigrantName;
+        return immigrantName;
     }
     /*
      * sets the immigrant name
      * @return void
      */
     public void setImmigrantName(String name){
-        ImmigrantName = name;
+        immigrantName = name;
     }
     /*
      * sets the immigrant address
      * @return void
      */
     public void setImmigrantAddress(String address){
-        ImmigrantAddress = address;
+        immigrantAddress = address;
     }
 
     /*
@@ -101,7 +101,7 @@ public class DependentAdd {
      * @return String of the immigrant address
      */
     public String getImmigrantAddress(){
-        return ImmigrantAddress;
+        return immigrantAddress;
     }
     /*
      * sets the dependent name
@@ -178,13 +178,13 @@ public class DependentAdd {
      * @return void
      */
     public void setImmigrantANum(int aNum){
-        ImmigrantANumber = aNum;
+        immigrantANumber = aNum;
     }
     /*
      * gets immigrant Anum
      * @return int immigrant's A num
      */
     public int getImmigrantAnum(){
-        return ImmigrantANumber;
+        return immigrantANumber;
     }
 }

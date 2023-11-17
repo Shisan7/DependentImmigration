@@ -21,29 +21,19 @@ public class DataEntry {
         return newApplication;
     }
 
-    @Override
-    public equals(){
-        
-    }
     public DependentAdd retrieveApp(DependentAdd application){
         /*retrieves the dependent application that has already
         *been made for the immigrant if they have an existing application
         */
-        boolean isThere = false;
-        int i;
+        DependentAdd returnApp = null;
         for (DependentAdd app : savedAppsArray) {
             if(app==application){
-                isThere = true;
-                break;
+                returnApp = app;
+                return returnApp;
             }
             
         }
-        if (isThere){
-            return savedAppsArray.get(i);
-        }
-        else{
-            return null;
-        }
+        return returnApp;
     }
 
     public void buildRetrieveApp(){

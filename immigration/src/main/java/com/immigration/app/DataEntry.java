@@ -12,12 +12,19 @@ public class DataEntry {
     String immigrantName;
     Boolean isReturn;
 
+    /*
+     * creates a new DependentAdd application that is blank to fill out
+     */
     public DependentAdd createDependentAdd(){
         DependentAdd newApplication = new DependentAdd(immigrantName, 0);
         savedAppsArray.add(newApplication);
         return newApplication;
     }
 
+    @Override
+    public equals(){
+        
+    }
     public DependentAdd retrieveApp(DependentAdd application){
         /*retrieves the dependent application that has already
         *been made for the immigrant if they have an existing application
@@ -77,7 +84,6 @@ public class DataEntry {
          */
         UI2 ui2 = new UI2();
         ui2.launchUI2();
-
     }
 
 }

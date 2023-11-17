@@ -25,7 +25,26 @@ public class DependentAdd {
         this.dependentName = dependentName;
         this.dependentProfileID = dependentProfileID;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj){
+            return true;
+        }
+        if(obj == null || getClass() != obj.getClass()){
+            return false;
+        }
+        DependentAdd that = (DependentAdd) obj;
+        return this.getAppNum() == that.getAppNum();
+    }
     
+    @Override
+    public int hashCode(){
+        int hash = 7;
+        hash = 31*getAppNum()*hash;
+        return hash;
+    }
+
     /*
      * sets the application number
      */

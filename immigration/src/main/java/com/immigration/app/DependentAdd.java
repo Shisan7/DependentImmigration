@@ -7,13 +7,15 @@ package com.immigration.app;
  * includes information for immigrant and dependent
  */
 public class DependentAdd {
+    public int appNum;
     public int ImmigrantProfileID;
     public String ImmigrantName;
     public String ImmigrantAddress;
-    public int ANumber;
+    public int ImmigrantANumber;
     public String dependentName;
     public int dependentProfileID;
     public String dependentAdress;
+    public int dependentANumber;
     public String relationship;
 
     /**
@@ -22,6 +24,21 @@ public class DependentAdd {
     public DependentAdd(String dependentName, int dependentProfileID){
         this.dependentName = dependentName;
         this.dependentProfileID = dependentProfileID;
+    }
+    
+    /*
+     * sets the application number
+     */
+    public void setAppNum(int num){
+        appNum = num;
+    }
+
+    /*
+     * gets the app number
+     * @return int application number
+     */
+    public int getAppNum(){
+        return appNum;
     }
 
     /*
@@ -60,6 +77,10 @@ public class DependentAdd {
         ImmigrantAddress = address;
     }
 
+    /*
+     * gets the immigrant's address
+     * @return String of the immigrant address
+     */
     public String getImmigrantAddress(){
         return ImmigrantAddress;
     }
@@ -85,6 +106,10 @@ public class DependentAdd {
         dependentAdress = address;
     }
 
+    /*
+     * gets the dependent's address
+     * @return String of the dependent Address
+     */
     public String getDependentAddress(){
         return dependentAdress;
     }
@@ -95,8 +120,28 @@ public class DependentAdd {
     public void setDependentID(int id){
         dependentProfileID = id;
     }
+
+    /*
+     * gets the dependent profile ID number
+     * @return int of the ID number
+     */
     public int getDependentID(){
         return dependentProfileID;
+    }
+
+    /*
+     * sets the dependent's A number
+     * @return void
+     */
+    public void setDependentANum(int aNum){
+        dependentANumber = aNum;
+    }
+    /*
+     * sets the dependent Anumber
+     * @return int of the dependent's A number
+     */
+    public int getDependentAnum(){
+        return dependentANumber;
     }
     /*
      * sets the relationship between immigrant and dependent
@@ -108,12 +153,19 @@ public class DependentAdd {
     public String getRelationship(){
         return relationship;
     }
-
-    public void setANum(int aNum){
-        ANumber = aNum;
+    /*
+     * sets immigrant a number
+     * @param int anumber being set
+     * @return void
+     */
+    public void setImmigrantANum(int aNum){
+        ImmigrantANumber = aNum;
     }
-
-    public int getAnum(){
-        return ANumber;
+    /*
+     * gets immigrant Anum
+     * @return int immigrant's A num
+     */
+    public int getImmigrantAnum(){
+        return ImmigrantANumber;
     }
 }

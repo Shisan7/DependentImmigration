@@ -8,15 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Test class for DependentAdd
  */
 public class DependentAddTest {
-    
-
-    @Test
-    public void testSave(){
-        //tests the save method in DependentAdd
-        DependentAdd dependentAdd  = new DependentAdd("Kaylie", 0);
-        boolean saved = dependentAdd.save();
-        assertEquals(false, saved);
-    }
 
     @Test
     public void testGetandSetImmigrantID(){

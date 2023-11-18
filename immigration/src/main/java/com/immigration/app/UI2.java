@@ -1,6 +1,7 @@
 package com.immigration.app;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.text.Font;
 
 public class UI2 extends Application{
     private TextField nameField;
@@ -22,17 +24,25 @@ public class UI2 extends Application{
 
     @Override
     public void start(Stage stage){
-        Label l = new Label("Home page");
+        Label l = new Label("Home Page\n");
+        l.setFont(new Font(20));
         Button retrieveButton = new Button("retrive old application");
         Button startnewButton = new Button("start a new application");
+        Button exitButton = new Button("Exit");
 
         startnewButton.setOnAction(value -> screen1(stage));
         retrieveButton.setOnAction(value -> screen1(stage));
+        exitButton.setOnAction(event -> {
+            Platform.exit();
+        });
         
-        HBox hbox = new HBox(l, startnewButton, retrieveButton);
-        hbox.setAlignment(Pos.CENTER);
+        HBox hbox = new HBox(startnewButton, retrieveButton, exitButton);
         hbox.setSpacing(10);
-        Scene scene = new Scene(hbox, 400, 100);
+        hbox.setAlignment(Pos.CENTER);
+        VBox vbox = new VBox(l, hbox);
+        vbox.setSpacing(50);
+        vbox.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(vbox, 1000, 800);
 
         stage.setTitle("Data Entry Application");
         stage.setScene(scene);
@@ -69,7 +79,7 @@ public class UI2 extends Application{
         root.getChildren().addAll(nameLabel, nameField, addressLabel, addressField, dependentIDLabel, dependentIDField,
         immigrantNameLabel, immigrantNameField, immigrantaddyLabel, immigrantaddyField, immigrantIDLabel, immigrantIDField, 
         relationshipLabel, relationshipField, saveButton, submitButton);
-        Scene scene = new Scene(new StackPane(root), 640, 480);
+        Scene scene = new Scene(new StackPane(root), 1000, 800);
         stage.setTitle("Data Entry Application");
         stage.setScene(scene);
         stage.show();
@@ -86,7 +96,7 @@ public class UI2 extends Application{
         HBox hbox = new HBox(l, noButton, yesButton);
         hbox.setAlignment(Pos.CENTER);
         hbox.setSpacing(20);
-        Scene scene = new Scene(hbox, 400, 100);
+        Scene scene = new Scene(hbox, 1000, 800);
         stage.setScene(scene);
         stage.show();
     }
@@ -102,7 +112,7 @@ public class UI2 extends Application{
         HBox hbox = new HBox(l, returnHomeButton, submitAnotherButton);
         hbox.setAlignment(Pos.CENTER);
         hbox.setSpacing(20);
-        Scene scene = new Scene(hbox, 400, 100);
+        Scene scene = new Scene(hbox, 1000, 800);
         stage.setScene(scene);
         stage.show();
     }
@@ -115,12 +125,12 @@ public class UI2 extends Application{
 
     private void saveDependentInfo(DataEntry dataEntry){
         String dependentNameSaved = nameField.getText();
+        String immigrantName = immigrantNameField.getText();
         String dependentAddressSaved = addressField.getText();
         String immigrantAddressSaved = immigrantaddyField.getText();
         int immigrantID = Integer.parseInt(immigrantIDField.getText());
         int dependentID = Integer.parseInt(dependentIDField.getText());
         String relationship = relationshipField.getText();
-        String immigrantName = immigrantNameField.getText();
         
         DependentAdd dependentAdd = dataEntry.createDependentAdd();
         dependentAdd.setDependentName(dependentNameSaved);

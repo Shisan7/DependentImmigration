@@ -46,6 +46,6 @@ class WorkFlowTest {
     @Test
     void testSaveApplication() {
         DataEntry de = new DataEntry(); // Create a sample DependentAdd object
-        assertNotNull(workFlow.saveCompletedApp(de)); // Assuming saveApplication returns null
+        assertNotNull(workFlow.saveApplication(workFlow.inProgressUser)); // Assuming saveApplication returns null
     }
 }

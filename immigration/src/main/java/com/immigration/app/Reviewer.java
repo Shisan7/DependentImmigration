@@ -7,18 +7,23 @@ public class Reviewer {
     private WorkFlow wf;
     private DependentAdd applicant;
     private boolean unique;
+
+    public DependentAdd getApplicant(){
+        return applicant;
+    }
+
+    public WorkFlow getWorkFLow(){
+        return wf;
+    }
     /**
      * Constructor for the class
      * @param wf is the workflow object passed on
      */
     public Reviewer(WorkFlow wf){
         this.wf = wf;
-    }
-    /**
-     * Displays the screen for reviewer
-     */
-    public void showScreen(){
-
+        applicant = GetFirst(wf);
+        unique = true;
+        System.out.println("Finished building reviewer, the applicant is " + applicant.dependentName);
     }
     /**
      * Saves the reviewer's progress
@@ -75,16 +80,14 @@ public class Reviewer {
     }
     /**
      * Closes everything, saves the current progress and exits with an exit code.
-     * @return is an int that denotes how the function exited.
+     * @return is a boolean that denotes how the function exited.
      */
-    public int exit(WorkFlow wf, Reviewer rv){
-        return 0;
+    public boolean exit(WorkFlow wf){
+        return wf.DBSave();
     }
 
     public static void main(String[] args) {
-        WorkFlow wf = new WorkFlow();
-        Reviewer rv = new Reviewer(wf);
         UI u = new UI();
-        u.ReviewerLauch();
+        u.ReviewerLaunch();
     }
 }

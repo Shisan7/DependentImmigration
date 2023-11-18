@@ -7,7 +7,7 @@ class DataEntryTest {
 
     @Test
     void testRetrieveApp(){
-        DependentAdd application = new DependentAdd("Kaylie", 123);
+        DependentAdd application = new DependentAdd("Kaylie", 123, 1);
         application.setAppNum(1);
         application.setDependentANum(2);
         application.setDependentAddress("123 Street");

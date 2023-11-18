@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 
 public class UI2 extends Application{
+    DependentAdd newApplication;
+    DataEntry dataEntry = new DataEntry();
     private TextField nameField;
     private TextField addressField;
     private TextField dependentIDField;
@@ -21,9 +23,10 @@ public class UI2 extends Application{
     private TextField immigrantaddyField;
     private TextField immigrantIDField;
     private TextField relationshipField;
-
+    
     @Override
     public void start(Stage stage){
+        dataEntry.buildRetrieveApp();
         Label l = new Label("Home Page\n");
         l.setFont(new Font(20));
         Button retrieveButton = new Button("retrive old application");
@@ -32,9 +35,7 @@ public class UI2 extends Application{
 
         startnewButton.setOnAction(value -> screen1(stage));
         retrieveButton.setOnAction(value -> screen1(stage));
-        exitButton.setOnAction(event -> {
-            Platform.exit();
-        });
+        exitButton.setOnAction(event -> Platform.exit());
         
         HBox hbox = new HBox(startnewButton, retrieveButton, exitButton);
         hbox.setSpacing(10);
@@ -49,10 +50,13 @@ public class UI2 extends Application{
         stage.show();
     }
     public void screen1(Stage stage){
-        DataEntry dataEntry = new DataEntry();
         Button submitButton = new Button("Submit");
-        submitButton.setOnAction(value -> screen2(stage));
-
+        submitButton.setOnAction(value -> {
+            saveDependentInfo(dataEntry);
+            screen2(stage);
+        });
+        Button saveButton = new Button("Save");
+        saveButton.setOnAction(e -> saveDependentInfo(dataEntry));
 
         VBox root = new VBox();
 
@@ -72,9 +76,6 @@ public class UI2 extends Application{
         immigrantIDField = new TextField();
         Label immigrantNameLabel = new Label("Immigrant Name: ");
         immigrantNameField = new TextField();
-
-        Button saveButton = new Button("Save");
-        saveButton.setOnAction(e -> saveDependentInfo(dataEntry));
 
         root.getChildren().addAll(nameLabel, nameField, addressLabel, addressField, dependentIDLabel, dependentIDField,
         immigrantNameLabel, immigrantNameField, immigrantaddyLabel, immigrantaddyField, immigrantIDLabel, immigrantIDField, 
@@ -124,21 +125,25 @@ public class UI2 extends Application{
     }
 
     private void saveDependentInfo(DataEntry dataEntry){
-        String dependentNameSaved = nameField.getText();
-        String immigrantName = immigrantNameField.getText();
-        String dependentAddressSaved = addressField.getText();
-        String immigrantAddressSaved = immigrantaddyField.getText();
-        int immigrantID = Integer.parseInt(immigrantIDField.getText());
-        int dependentID = Integer.parseInt(dependentIDField.getText());
-        String relationship = relationshipField.getText();
-        
-        DependentAdd dependentAdd = dataEntry.createDependentAdd();
-        dependentAdd.setDependentName(dependentNameSaved);
-        dependentAdd.setDependentAddress(dependentAddressSaved);
-        dependentAdd.setImmigrantAddress(immigrantAddressSaved);
-        dependentAdd.setImmigrantID(immigrantID);
-        dependentAdd.setDependentID(dependentID);
-        dependentAdd.setRelationship(relationship);
-        dependentAdd.setImmigrantName(immigrantName);
+        try{
+            String dependentNameSaved = nameField.getText();
+            String immigrantName = immigrantNameField.getText();
+            String dependentAddressSaved = addressField.getText();
+            String immigrantAddressSaved = immigrantaddyField.getText();
+            int immigrantID = Integer.parseInt(immigrantIDField.getText());
+            int dependentID = Integer.parseInt(dependentIDField.getText());
+            String relationship = relationshipField.getText();
+            
+            newApplication = dataEntry.createDependentAdd();
+            newApplication.setDependentName(dependentNameSaved);
+            newApplication.setDependentAddress(dependentAddressSaved);
+            newApplication.setImmigrantAddress(immigrantAddressSaved);
+            newApplication.setImmigrantID(immigrantID);
+            newApplication.setDependentID(dependentID);
+            newApplication.setRelationship(relationship);
+            newApplication.setImmigrantName(immigrantName);
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+        }
     }
 }

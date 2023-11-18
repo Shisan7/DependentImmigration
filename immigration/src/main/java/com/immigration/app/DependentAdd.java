@@ -21,9 +21,10 @@ public class DependentAdd {
     /**
      * Public constructor for the class
      */
-    public DependentAdd(String dependentName, int dependentProfileID){
-        this.dependentName = dependentName;
-        this.dependentProfileID = dependentProfileID;
+    public DependentAdd(String immigrantName, int immigrantProfileID, int appNum){
+        this.immigrantName = immigrantName;
+        this.immigrantProfileID = immigrantProfileID;
+        this.appNum = appNum;
     }
 
     @Override

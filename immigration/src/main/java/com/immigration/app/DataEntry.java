@@ -9,14 +9,15 @@ import java.util.Scanner;
 public class DataEntry {
     //handle everything user wants to do
     ArrayList<DependentAdd> savedAppsArray = new ArrayList<>();
+    ArrayList<DependentAdd> finishedAppsArray = new ArrayList<>();
     String immigrantName;
+    int immigrantProfileID;
     Boolean isReturn;
-
     /*
      * creates a new DependentAdd application that is blank to fill out
      */
     public DependentAdd createDependentAdd(){
-        DependentAdd newApplication = new DependentAdd(immigrantName, 0);
+        DependentAdd newApplication = new DependentAdd(immigrantName, 0, savedAppsArray.size());
         savedAppsArray.add(newApplication);
         return newApplication;
     }
@@ -41,7 +42,7 @@ public class DataEntry {
             File file = new File("inProgressUser.txt");
             Scanner scanner = new Scanner(file);
             while(scanner.hasNextLine()){
-                DependentAdd currentApplication = new DependentAdd(null, 0);
+                DependentAdd currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
                 Integer.parseInt(scanner.nextLine());
                 currentApplication.setDependentName(scanner.nextLine());
                 currentApplication.setDependentAddress(scanner.nextLine());

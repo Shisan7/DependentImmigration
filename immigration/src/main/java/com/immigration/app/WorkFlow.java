@@ -12,19 +12,29 @@ public class WorkFlow {
      * Accesses the file for readyQueue and reads through it adding it to the queue.
      */
     public void loadReadyQueue(){
-
+        /*
+         * loads the applications that are ready to be reviewed from readyQueue
+         */
     }
 
     public void loadTerminatedList(){
+        /*
+         * loads the list of applications that have been terminated/not approved
+         */
 
     }
 
     public void loadCompletedList(){
+        /*
+         * loads the list of applications that have been completed and approved
+         */
 
     }
 
     public void loadInProgressUser(){
-
+        /*
+         * loads the applications that have been saved but not submitted by the user
+         */
     }
 
     public WorkFlow(){
@@ -34,7 +44,7 @@ public class WorkFlow {
         inProgressUser = null;
     }
 
-    public boolean DBSave(){//Saves to database.
+    public boolean dbSave(){//Saves to database.
         saveReadyQueue(inProgressUser);
         saveTerminatedApp(inProgressUser);
         saveCompletedApp(inProgressUser);

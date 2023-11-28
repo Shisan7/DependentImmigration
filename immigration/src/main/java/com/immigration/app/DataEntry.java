@@ -12,7 +12,6 @@ public class DataEntry {
     ArrayList<DependentAdd> finishedAppsArray = new ArrayList<>();
     String immigrantName;
     int immigrantProfileID;
-    Boolean isReturn;
     /*
      * creates a new DependentAdd application that is blank to fill out
      */

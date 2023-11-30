@@ -1,15 +1,12 @@
 package com.immigration.app;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.LinkedList;
 
 
 
 public class DataEntry {
     //handle everything user wants to do
-    ArrayList<DependentAdd> savedAppsArray = new ArrayList<>();
-    ArrayList<DependentAdd> finishedAppsArray = new ArrayList<>();
+    LinkedList<DependentAdd> savedAppsArray = new LinkedList<>();
+    LinkedList<DependentAdd> finishedAppsArray = new LinkedList<>();
     String immigrantName;
     int immigrantProfileID;
     /*
@@ -37,27 +34,12 @@ public class DataEntry {
     }
 
     public void buildRetrieveApp(){
-        try{
-            File file = new File("inProgressUser.txt");
-            Scanner scanner = new Scanner(file);
-            while(scanner.hasNextLine()){
-                DependentAdd currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
-                Integer.parseInt(scanner.nextLine());
-                currentApplication.setDependentName(scanner.nextLine());
-                currentApplication.setDependentAddress(scanner.nextLine());
-                currentApplication.setDependentID(scanner.nextInt());
-                currentApplication.setDependentANum(scanner.nextInt());
-                currentApplication.setImmigrantName(scanner.nextLine());
-                currentApplication.setImmigrantAddress(scanner.nextLine());
-                currentApplication.setImmigrantID(scanner.nextInt());
-                currentApplication.setImmigrantANum(scanner.nextInt());
-                currentApplication.setRelationship(scanner.nextLine());
-                savedAppsArray.add(currentApplication);
-            }
-            scanner.close();
-        } catch(FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        /* might delete, call retrieve app in Workflow 
+         * build workflow object
+         * call function that builds the array
+         * add that array to 
+        */
+        //savedAppsArray.add(currentApplication)
     }
 
     public void savetoWF(){

@@ -1,12 +1,14 @@
 package com.immigration.app;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WorkFlow {
     Queue<DependentAdd> readyQueue;
     LinkedList<DependentAdd> terminatedList;
     LinkedList<DependentAdd> completedList;
-    DependentAdd inProgressUser;
+    LinkedList<DependentAdd> inProgressUser;
 
     /*
      * Accesses the file for readyQueue and reads through it adding it to the queue.
@@ -15,12 +17,55 @@ public class WorkFlow {
         /*
          * loads the applications that are ready to be reviewed from readyQueue
          */
+        try{
+            File file = new File("readyQueue.txt");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                DependentAdd newApplication = new DependentAdd(null, 0, 0);
+                Integer.parseInt(scanner.nextLine());
+                newApplication.setDependentName(scanner.nextLine());
+                newApplication.setDependentAddress(scanner.nextLine());
+                newApplication.setDependentID(Integer.parseInt(scanner.nextLine()));
+                newApplication.setDependentANum(Integer.parseInt(scanner.nextLine()));
+                newApplication.setImmigrantName(scanner.nextLine());
+                newApplication.setImmigrantAddress(scanner.nextLine());
+                newApplication.setImmigrantID(Integer.parseInt(scanner.nextLine()));
+                newApplication.setImmigrantANum(Integer.parseInt(scanner.nextLine()));
+                newApplication.setRelationship(scanner.nextLine());
+                readyQueue.add(newApplication);
+            }
+            scanner.close();
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void loadTerminatedList(){
         /*
          * loads the list of applications that have been terminated/not approved
          */
+        try{
+            File file = new File("terminatedList.txt");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                DependentAdd newApplication = new DependentAdd(null, 0, 0);
+                Integer.parseInt(scanner.nextLine());
+                newApplication.setDependentName(scanner.nextLine());
+                newApplication.setDependentAddress(scanner.nextLine());
+                newApplication.setDependentID(Integer.parseInt(scanner.nextLine()));
+                newApplication.setDependentANum(Integer.parseInt(scanner.nextLine()));
+                newApplication.setImmigrantName(scanner.nextLine());
+                newApplication.setImmigrantAddress(scanner.nextLine());
+                newApplication.setImmigrantID(Integer.parseInt(scanner.nextLine()));
+                newApplication.setImmigrantANum(Integer.parseInt(scanner.nextLine()));
+                newApplication.setRelationship(scanner.nextLine());
+                terminatedList.add(newApplication);
+            }
+            scanner.close();
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -28,20 +73,62 @@ public class WorkFlow {
         /*
          * loads the list of applications that have been completed and approved
          */
-
+        try{
+            File file = new File("completedList.txt");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                DependentAdd newApplication = new DependentAdd(null, 0, 0);
+                Integer.parseInt(scanner.nextLine());
+                newApplication.setDependentName(scanner.nextLine());
+                newApplication.setDependentAddress(scanner.nextLine());
+                newApplication.setDependentID(Integer.parseInt(scanner.nextLine()));
+                newApplication.setDependentANum(Integer.parseInt(scanner.nextLine()));
+                newApplication.setImmigrantName(scanner.nextLine());
+                newApplication.setImmigrantAddress(scanner.nextLine());
+                newApplication.setImmigrantID(Integer.parseInt(scanner.nextLine()));
+                newApplication.setImmigrantANum(Integer.parseInt(scanner.nextLine()));
+                newApplication.setRelationship(scanner.nextLine());
+                completedList.add(newApplication);
+            }
+            scanner.close();
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
     public void loadInProgressUser(){
         /*
          * loads the applications that have been saved but not submitted by the user
+         * returns a DependentAdd array 
          */
+        try{
+            ArrayList<DependentAdd> savedAppsArray = new ArrayList<>();
+            File file = new File("inProgressUser.txt");
+            Scanner scanner = new Scanner(file);
+            while(scanner.hasNextLine()){
+                DependentAdd currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
+                Integer.parseInt(scanner.nextLine());
+                currentApplication.setDependentName(scanner.nextLine());
+                currentApplication.setDependentAddress(scanner.nextLine());
+                currentApplication.setDependentID(scanner.nextInt());
+                currentApplication.setDependentANum(scanner.nextInt());
+                currentApplication.setImmigrantName(scanner.nextLine());
+                currentApplication.setImmigrantAddress(scanner.nextLine());
+                currentApplication.setImmigrantID(scanner.nextInt());
+                currentApplication.setImmigrantANum(scanner.nextInt());
+                currentApplication.setRelationship(scanner.nextLine());
+            }
+            scanner.close();
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public WorkFlow(){
         readyQueue = new LinkedList<>();
         terminatedList = new LinkedList<>();
         completedList = new LinkedList<>();
-        inProgressUser = null;
+        inProgressUser = new LinkedList<>();
     }
 
     public boolean dbSave(){//Saves to database.

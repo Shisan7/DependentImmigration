@@ -2,6 +2,8 @@ package com.immigration.app;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class WorkFlow {
@@ -132,43 +134,123 @@ public class WorkFlow {
     }
 
     public boolean dbSave(){//Saves to database.
-        saveReadyQueue(inProgressUser);
-        saveTerminatedApp(inProgressUser);
-        saveCompletedApp(inProgressUser);
-        saveApplication(inProgressUser);
-        return false;
+        saveReadyQueue();
+        saveTerminatedApp();
+        saveCompletedApp();
+        saveApplication();
+        return true;
     }
     /**
      * Saves the given application to the readyQueue.
-     * @param da is the business object/application given.
-     * @return is checking weather the addition was a success or not.
+     * @return is checking weather the saving to file was a success or not.
      */
-    public boolean saveReadyQueue(DependentAdd da){
-        return false;
+    public boolean saveReadyQueue(){
+        try{
+            FileWriter myWriter = new FileWriter("readyQueue.txt");
+            Queue<DependentAdd> tempQueue = readyQueue;
+            while (!tempQueue.isEmpty()) {
+                DependentAdd temp = tempQueue.poll();
+                myWriter.write(0);
+                myWriter.write(temp.dependentName);
+                myWriter.write(temp.dependentAdress);
+                myWriter.write(temp.dependentProfileID);
+                myWriter.write(temp.dependentANumber);
+                myWriter.write(temp.immigrantName);
+                myWriter.write(temp.immigrantAddress);
+                myWriter.write(temp.immigrantProfileID);
+                myWriter.write(temp.immigrantANumber);
+                myWriter.write(temp.relationship);
+            }
+            myWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
     /**
      * Saves the given application to the terminated list and removes from readyQueue if found.
-     * @param da is the business object/application given.
      * @return is checking weather the addition was a success or not.
      */
-    public boolean saveTerminatedApp(DependentAdd da){
-        return false;
+    public boolean saveTerminatedApp(){
+        try{
+            FileWriter myWriter = new FileWriter("terminatedList.txt");
+            LinkedList<DependentAdd> tempList = terminatedList;
+            while (!tempList.isEmpty()) {
+                DependentAdd temp = tempList.removeFirst();
+                myWriter.write(0);
+                myWriter.write(temp.dependentName);
+                myWriter.write(temp.dependentAdress);
+                myWriter.write(temp.dependentProfileID);
+                myWriter.write(temp.dependentANumber);
+                myWriter.write(temp.immigrantName);
+                myWriter.write(temp.immigrantAddress);
+                myWriter.write(temp.immigrantProfileID);
+                myWriter.write(temp.immigrantANumber);
+                myWriter.write(temp.relationship);
+            }
+            myWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
     /**
      * Saves the given application to the comleted list and removes from readyQueue/terminated list if found.
-     * @param da is the business object/application given.
      * @return is checking weather the addition was a success or not.
      */
-    public boolean saveCompletedApp(DependentAdd da){
-        return false;
+    public boolean saveCompletedApp(){
+        try{
+            FileWriter myWriter = new FileWriter("completedList.txt");
+            LinkedList<DependentAdd> tempList = completedList;
+            while (!tempList.isEmpty()) {
+                DependentAdd temp = tempList.removeFirst();
+                myWriter.write(0);
+                myWriter.write(temp.dependentName);
+                myWriter.write(temp.dependentAdress);
+                myWriter.write(temp.dependentProfileID);
+                myWriter.write(temp.dependentANumber);
+                myWriter.write(temp.immigrantName);
+                myWriter.write(temp.immigrantAddress);
+                myWriter.write(temp.immigrantProfileID);
+                myWriter.write(temp.immigrantANumber);
+                myWriter.write(temp.relationship);
+            }
+            myWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
     
     /**
      * Converts the given DataEntry object into DependentAdd and saves to inProgressUser and calls DBSave function.
-     * @param de is the application to store.
      * @return is the saved DependentAdd object.
      */
-    public DependentAdd saveApplication(DependentAdd de){
-        return null;
+    public boolean saveApplication(){
+        try{
+            FileWriter myWriter = new FileWriter("terminatedList.txt");
+            LinkedList<DependentAdd> tempList = inProgressUser;
+            while (!tempList.isEmpty()) {
+                DependentAdd temp = tempList.removeFirst();
+                myWriter.write(0);
+                myWriter.write(temp.dependentName);
+                myWriter.write(temp.dependentAdress);
+                myWriter.write(temp.dependentProfileID);
+                myWriter.write(temp.dependentANumber);
+                myWriter.write(temp.immigrantName);
+                myWriter.write(temp.immigrantAddress);
+                myWriter.write(temp.immigrantProfileID);
+                myWriter.write(temp.immigrantANumber);
+                myWriter.write(temp.relationship);
+            }
+            myWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

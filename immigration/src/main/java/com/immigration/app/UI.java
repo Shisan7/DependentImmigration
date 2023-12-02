@@ -17,7 +17,7 @@ public class UI extends Application{
     
     @Override
     public void start(Stage stage) {
-        DependentAdd da = new DependentAdd("Darius Daniels", 12345);
+        DependentAdd da = new DependentAdd("Darius Daniels", 12345, 3);
         WorkFlow wf = new WorkFlow();
         wf.readyQueue.add(da);
         Reviewer r = new Reviewer(wf);
@@ -48,11 +48,11 @@ public class UI extends Application{
 
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
-        textArea.appendText(r.getApplicant().dependentName);
-        textArea.appendText(Integer.toString(r.getApplicant().ANumber));
+        textArea.appendText(r.getApplicant().immigrantName);
+        textArea.appendText(Integer.toString(r.getApplicant().immigrantANumber));
 
-        Text dependentNameText = new Text(10, 20, "Dependent's Name: " + r.getApplicant().dependentName);
-        Text depProfileIDText = new Text(10, 20, "Dependent's profile ID: " + Integer.toString(r.getApplicant().dependentProfileID));
+        Text dependentNameText = new Text(10, 20, "Immigrant's Name: " + r.getApplicant().immigrantName);
+        Text depProfileIDText = new Text(10, 20, "Immigrant's profile ID: " + Integer.toString(r.getApplicant().immigrantProfileID));
 
         validateBtn.setOnAction(value ->  {
             if(r.validate(r.getApplicant())){
@@ -64,7 +64,7 @@ public class UI extends Application{
          });
 
         duplicateBtn.setOnAction(value ->  {
-            if(r.isAssigned(r.getApplicant().dependentProfileID)){
+            if(r.isAssigned(r.getApplicant().immigrantProfileID)){
                 duplicateBtn.setStyle("-fx-background-color: green");
             }
             else{

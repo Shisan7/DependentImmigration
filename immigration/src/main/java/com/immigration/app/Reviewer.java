@@ -45,7 +45,7 @@ public class Reviewer {
      * @return is the profileID
      */
     public int GetProfile(int dependentProfileID){
-        DependentAdd de = new DependentAdd("null", 598);
+        DependentAdd de = new DependentAdd("null", 598, 1);
         return de.getImmigrantID();
     }
     /**
@@ -83,7 +83,7 @@ public class Reviewer {
      * @return is a boolean that denotes how the function exited.
      */
     public boolean exit(WorkFlow wf){
-        return wf.DBSave();
+        return wf.dbSave();
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,9 @@
+Case 1
+Dependent Name: Kaylie Hall
+Dependent Address: 123 Street
+Dependent ID: 123
+A#: 1234
+Immigrant Name:Carol Hall
+Immigrant Address: 123 Street
+Profile ID: 124
+Relationship: Mother

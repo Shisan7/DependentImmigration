@@ -126,10 +126,10 @@ public class WorkFlow {
                 }
             }
             scanner.close();
-            return currentApplication;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public WorkFlow(){
@@ -237,7 +237,7 @@ public class WorkFlow {
      */
     public boolean saveApplication(){
         try{
-            FileWriter myWriter = new FileWriter("terminatedList.txt");
+            FileWriter myWriter = new FileWriter("inProgressUser.txt");
             LinkedList<DependentAdd> tempList = inProgressUser;
             while (!tempList.isEmpty()) {
                 DependentAdd temp = tempList.removeFirst();

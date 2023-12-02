@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -53,7 +55,7 @@ public class UI2 extends Application{
         Button submitButton = new Button("Submit");
         submitButton.setOnAction(value -> {
             saveDependentInfo(dataEntry);
-            screen2(stage);
+            screen2(stage, newApplication);
         });
         Button saveButton = new Button("Save");
         saveButton.setOnAction(e -> saveDependentInfo(dataEntry));
@@ -86,20 +88,25 @@ public class UI2 extends Application{
         stage.show();
     }
 
-    public void screen2(Stage stage){
-        Label l = new Label("Are you sure you want to submit?");
-        Button noButton = new Button("No");
-        Button yesButton = new Button("Yes");
+    public void screen2(Stage stage, DependentAdd application){
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation");
+        confirmationAlert.setHeaderText("Are you sure you want to submit?");
+        confirmationAlert.setContentText("Review your application details before submitting.");
+        
+        ButtonType noButton = new ButtonType("No");
+        ButtonType yesButton = new ButtonType("Yes");
 
-        noButton.setOnAction(value -> screen1(stage));
-        yesButton.setOnAction(value -> screen3(stage));
+        confirmationAlert.getButtonTypes().setAll(yesButton, noButton);
 
-        HBox hbox = new HBox(l, noButton, yesButton);
-        hbox.setAlignment(Pos.CENTER);
-        hbox.setSpacing(20);
-        Scene scene = new Scene(hbox, 1000, 800);
-        stage.setScene(scene);
-        stage.show();
+        confirmationAlert.showAndWait().ifPresent(buttonType ->{
+            if (buttonType == yesButton){
+                showApplicationDetails(stage, application);
+            }
+            else{
+                screen1(stage);
+            }
+        });
     }
 
     public void screen3(Stage stage){
@@ -145,5 +152,27 @@ public class UI2 extends Application{
         } catch (NumberFormatException e){
             e.printStackTrace();
         }
+    }
+
+    public void showApplicationDetails(Stage stage, DependentAdd application){
+        Label nameLabel = new Label("Dependent Name: " + application.getDependentName());
+        Label addressLabel = new Label("Dependent Address: "+ application.getDependentAddress());
+        Label dependentIDLabel = new Label("Dependent ID: "+ application.getDependentID());
+
+        Label relationshipLabel = new Label("Relationship tp dependent: "+ application.getRelationship());
+
+        Label immigrantAddressLabel = new Label("Immigrant Address: " + application.getImmigrantAddress());
+        Label immigrantIDLabel = new Label("Immigrant Profile ID: " + application.getImmigrantID());
+        Label immigrantNameLabel = new Label("Immigrant Name: " + application.getImmigrantName());
+
+        VBox root = new VBox(nameLabel, addressLabel, dependentIDLabel, immigrantNameLabel, immigrantAddressLabel, immigrantIDLabel, relationshipLabel);
+        Button nextButton = new Button("Next");
+        nextButton.setOnAction(event -> screen3(stage));
+        root.getChildren().add(nextButton);
+        Scene scene = new Scene(new StackPane(root), 1000, 800);
+        
+        stage.setTitle("Application Details");
+        stage.setScene(scene);
+        stage.show();
     }
 }

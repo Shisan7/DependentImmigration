@@ -98,7 +98,7 @@ public class WorkFlow {
         }
     }
 
-    public void loadInProgressUser(){
+    public DependentAdd loadInProgressUser(String dependentName, int depndentID){
         /*
          * loads the applications that have been saved but not submitted by the user
          * returns a DependentAdd array 
@@ -107,8 +107,9 @@ public class WorkFlow {
             ArrayList<DependentAdd> savedAppsArray = new ArrayList<>();
             File file = new File("inProgressUser.txt");
             Scanner scanner = new Scanner(file);
+            DependentAdd currentApplication = null;
             while(scanner.hasNextLine()){
-                DependentAdd currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
+                currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
                 Integer.parseInt(scanner.nextLine());
                 currentApplication.setDependentName(scanner.nextLine());
                 currentApplication.setDependentAddress(scanner.nextLine());
@@ -119,8 +120,13 @@ public class WorkFlow {
                 currentApplication.setImmigrantID(scanner.nextInt());
                 currentApplication.setImmigrantANum(scanner.nextInt());
                 currentApplication.setRelationship(scanner.nextLine());
+                if(dependentName.equals(currentApplication.getDependentName()) && depndentID==currentApplication.getDependentID()){
+                    scanner.close();
+                    return currentApplication;
+                }
             }
             scanner.close();
+            return currentApplication;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }

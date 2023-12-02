@@ -28,7 +28,6 @@ public class UI2 extends Application{
     
     @Override
     public void start(Stage stage){
-        dataEntry.workflow.loadInProgressUser(STYLESHEET_CASPIAN, 0)
         Label l = new Label("Home Page\n");
         l.setFont(new Font(20));
         Button retrieveButton = new Button("retrive old application");

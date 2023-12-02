@@ -19,6 +19,7 @@ public class WorkFlow {
         /*
          * loads the applications that are ready to be reviewed from readyQueue
          */
+        readyQueue = new LinkedList<>();
         try{
             File file = new File("readyQueue.txt");
             Scanner scanner = new Scanner(file);
@@ -37,7 +38,6 @@ public class WorkFlow {
                 readyQueue.add(newApplication);
             }
             scanner.close();
-            return readyQueue;
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
@@ -48,6 +48,7 @@ public class WorkFlow {
         /*
          * loads the list of applications that have been terminated/not approved
          */
+        terminatedList = new LinkedList<>();
         try{
             File file = new File("terminatedList.txt");
             Scanner scanner = new Scanner(file);
@@ -66,7 +67,6 @@ public class WorkFlow {
                 terminatedList.add(newApplication);
             }
             scanner.close();
-            return terminatedList;
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
@@ -77,6 +77,7 @@ public class WorkFlow {
         /*
          * loads the list of applications that have been completed and approved
          */
+        completedList = new LinkedList<>();
         try{
             File file = new File("completedList.txt");
             Scanner scanner = new Scanner(file);
@@ -95,7 +96,6 @@ public class WorkFlow {
                 completedList.add(newApplication);
             }
             scanner.close();
-            return completedList;
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
@@ -107,10 +107,11 @@ public class WorkFlow {
          * loads the applications that have been saved but not submitted by the user
          * returns a DependentAdd array 
          */
+        inProgressUser = new LinkedList<>();
         try{
-            ArrayList<DependentAdd> savedAppsArray = new ArrayList<>();
             File file = new File("inProgressUser.txt");
             Scanner scanner = new Scanner(file);
+
             DependentAdd currentApplication = null;
             while(scanner.hasNextLine()){
                 currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
@@ -127,7 +128,6 @@ public class WorkFlow {
                 inProgressUser.add(currentApplication);
             }
             scanner.close();
-            return inProgressUser;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }

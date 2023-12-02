@@ -114,7 +114,7 @@ public class WorkFlow {
 
             DependentAdd currentApplication = null;
             while(scanner.hasNextLine()){
-                currentApplication = new DependentAdd(null, 0, savedAppsArray.size());
+                currentApplication = new DependentAdd(null, 0, 0);
                 Integer.parseInt(scanner.nextLine());
                 currentApplication.setDependentName(scanner.nextLine());
                 currentApplication.setDependentAddress(scanner.nextLine());

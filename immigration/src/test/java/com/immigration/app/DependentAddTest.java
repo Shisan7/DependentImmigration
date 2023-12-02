@@ -12,29 +12,29 @@ class DependentAddTest {
     @Test
     void testGetandSetImmigrantID(){
         DependentAdd dependentAdd = new DependentAdd("Shisan", 0, 2);
-        dependentAdd.setImmigrantID(0);
-        assertEquals(0, dependentAdd.getImmigrantID());
+        dependentAdd.setImmigrantID(123);
+        assertEquals(123, dependentAdd.getImmigrantID());
     }
 
     @Test
     void  testGetandSetDependentName(){
         DependentAdd dependentAdd = new DependentAdd(null, 0, 0);
-        dependentAdd.setDependentName(null);
-        assertEquals(null, dependentAdd.getDependentName());
+        dependentAdd.setDependentName("Kaylie");
+        assertEquals("Kaylie", dependentAdd.getDependentName());
     }
 
     @Test
     void testgetandsetImmigrantName(){
         DependentAdd dependentAdd = new DependentAdd(null, 0, 0);
-        dependentAdd.setImmigrantName(null);
-        assertEquals(null, dependentAdd.getImmigrantName());
+        dependentAdd.setImmigrantName("Kaylie");
+        assertEquals("Kaylie", dependentAdd.getImmigrantName());
     }
 
     @Test
     void testsetImmigrantAddy(){
         DependentAdd dependentAdd = new DependentAdd(null, 0, 0);
-        dependentAdd.setImmigrantAddress(null);
-        assertEquals(null, dependentAdd.immigrantAddress);
+        dependentAdd.setImmigrantAddress("123 street");
+        assertEquals("123 street", dependentAdd.immigrantAddress);
     }
 
     @Test
@@ -47,15 +47,15 @@ class DependentAddTest {
     @Test
     void testsetDependentID(){
         DependentAdd dependentAdd = new DependentAdd(null, 0, 0);
-        dependentAdd.setDependentID(0);
-        assertEquals(0, dependentAdd.dependentProfileID);
+        dependentAdd.setDependentID(2);
+        assertEquals(2, dependentAdd.dependentProfileID);
 
     }
 
     @Test
     void testSetRelationship(){
-        DependentAdd dependentAdd = new DependentAdd(null, 0, 0);
-        dependentAdd.setRelationship(null);
-        assertEquals(null, dependentAdd.relationship);
+        DependentAdd dependentAdd = new DependentAdd("Kaylie", 123, 1);
+        dependentAdd.setRelationship("Mother");
+        assertEquals("Mother", dependentAdd.relationship);
     }
 }

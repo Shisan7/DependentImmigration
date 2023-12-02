@@ -66,7 +66,7 @@ public class DependentAdd {
      * @return int ID
      */
     public int getImmigrantID(){
-        return 0;
+        return immigrantProfileID;
     }
     /*
      * sets the immigrant profile ID number

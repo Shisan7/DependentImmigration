@@ -13,8 +13,7 @@ class WorkFlowTest {
 
     @Test
     void testAddReadyApp() {
-        DependentAdd da = new DependentAdd(null, 0, 0); // Create a sample DependentAdd object
-        assertTrue(workFlow.saveReadyQueue(da)); // Test if adding to readyQueue returns true
+        assertTrue(workFlow.saveReadyQueue()); // Test if adding to readyQueue returns true
         assertEquals(1, workFlow.readyQueue.size()); // Test if the queue size increased
     }
 

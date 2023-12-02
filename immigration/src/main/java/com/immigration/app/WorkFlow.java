@@ -15,7 +15,7 @@ public class WorkFlow {
     /*
      * Accesses the file for readyQueue and reads through it adding it to the queue.
      */
-    public void loadReadyQueue(){
+    public Queue<DependentAdd> loadReadyQueue(){
         /*
          * loads the applications that are ready to be reviewed from readyQueue
          */
@@ -37,13 +37,14 @@ public class WorkFlow {
                 readyQueue.add(newApplication);
             }
             scanner.close();
+            return readyQueue;
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
-
+        return readyQueue;
     }
 
-    public void loadTerminatedList(){
+    public LinkedList<DependentAdd> loadTerminatedList(){
         /*
          * loads the list of applications that have been terminated/not approved
          */
@@ -65,13 +66,14 @@ public class WorkFlow {
                 terminatedList.add(newApplication);
             }
             scanner.close();
+            return terminatedList;
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
-
+        return terminatedList;
     }
 
-    public void loadCompletedList(){
+    public LinkedList<DependentAdd> loadCompletedList(){
         /*
          * loads the list of applications that have been completed and approved
          */
@@ -93,12 +95,14 @@ public class WorkFlow {
                 completedList.add(newApplication);
             }
             scanner.close();
+            return completedList;
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
+        return completedList;
     }
 
-    public DependentAdd loadInProgressUser(String dependentName, int depndentID){
+    public LinkedList<DependentAdd> loadInProgressUser(){
         /*
          * loads the applications that have been saved but not submitted by the user
          * returns a DependentAdd array 
@@ -120,16 +124,14 @@ public class WorkFlow {
                 currentApplication.setImmigrantID(scanner.nextInt());
                 currentApplication.setImmigrantANum(scanner.nextInt());
                 currentApplication.setRelationship(scanner.nextLine());
-                if(dependentName.equals(currentApplication.getDependentName()) && depndentID==currentApplication.getDependentID()){
-                    scanner.close();
-                    return currentApplication;
-                }
+                inProgressUser.add(currentApplication);
             }
             scanner.close();
+            return inProgressUser;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return inProgressUser;
     }
 
     public WorkFlow(){

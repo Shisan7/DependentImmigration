@@ -28,20 +28,14 @@ public class DataEntry {
         /*retrieves the dependent application that has already
         *been made for the immigrant if they have an existing application
         */
-        return workflow.loadInProgressUser(application.getImmigrantName(), application.getImmigrantID());
-    }
-
-    public void buildRetrieveApp(){
-        /* might delete, call retrieve app in Workflow 
-         * build workflow object
-         * call function that builds the array
-         * add that array to 
-        */
-        //savedAppsArray.add(currentApplication)
-    }
-
-    public void savetoWF(){
-        //sends the applicaiton to the workflow
+        LinkedList<DependentAdd> list = workflow.loadInProgressUser();
+        int i;
+        for(i=0; i<list.size(); i++){
+            if(application.getImmigrantName().equals(list.get(i).getImmigrantName())){
+                return list.get(i);
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args){
@@ -52,7 +46,7 @@ public class DataEntry {
          * if application not completed, stpres in inProgressUser.txt
          */
         WorkFlow workFlow = new WorkFlow();
-        workFlow.loadReadyQueue();
+        workFlow.loadInProgressUser();
  
         UI2 ui2 = new UI2();
         ui2.launchUI2();
